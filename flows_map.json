@@ -1,0 +1,241 @@
+[
+    {
+        "id": "abaee60b.039e88",
+        "type": "worldmap",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "lat": "51.4709",
+        "lon": "-2.6999",
+        "zoom": "11",
+        "layer": "OSM",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "panit": "true",
+        "x": 1081.5,
+        "y": 93,
+        "wires": []
+    },
+    {
+        "id": "a06958b.c57c7a8",
+        "type": "template",
+        "z": "cbc38735.70e868",
+        "name": "Add OS Map Layer",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"command\":{\n    \"map\":{\n        \"name\":\"UK OS Light\",\n        \"url\":\"https://api2.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG:3857/Light%203857/{z}/{x}/{y}.png?key={{{key}}}\",\n        \"opt\":{ \"minZoom\": 7, \"maxZoom\":20, \"attribution\":\"&copy; Ordnance Survey\" }\n    }\n}\n}",
+        "output": "json",
+        "x": 712,
+        "y": 154,
+        "wires": [
+            [
+                "abaee60b.039e88",
+                "ca728ee1.2331e",
+                "126fdd6c.e33263"
+            ]
+        ]
+    },
+    {
+        "id": "4b080063.9800d",
+        "type": "change",
+        "z": "cbc38735.70e868",
+        "name": "Get API key",
+        "rules": [
+            {
+                "t": "set",
+                "p": "key",
+                "pt": "msg",
+                "to": "os",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 498.5,
+        "y": 152,
+        "wires": [
+            [
+                "a06958b.c57c7a8"
+            ]
+        ]
+    },
+    {
+        "id": "86fa1a83.cad998",
+        "type": "inject",
+        "z": "cbc38735.70e868",
+        "name": "Manually add the OS map tiles",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 167.5,
+        "y": 195,
+        "wires": [
+            [
+                "4b080063.9800d"
+            ]
+        ]
+    },
+    {
+        "id": "ca728ee1.2331e",
+        "type": "debug",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1084,
+        "y": 168,
+        "wires": []
+    },
+    {
+        "id": "856c4296.b51aa",
+        "type": "link in",
+        "z": "cbc38735.70e868",
+        "name": "send to map",
+        "links": [
+            "97431366.5dbde",
+            "1c581e45.4bd4b2"
+        ],
+        "x": 857.5,
+        "y": 58,
+        "wires": [
+            [
+                "abaee60b.039e88",
+                "d73ff0cf.04653"
+            ]
+        ]
+    },
+    {
+        "id": "b074a028.72873",
+        "type": "worldmap in",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "x": 87,
+        "y": 150,
+        "wires": [
+            [
+                "e3aa7fcc.f637a",
+                "2ee60bf4.8363e4"
+            ]
+        ]
+    },
+    {
+        "id": "e3aa7fcc.f637a",
+        "type": "debug",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 297,
+        "y": 116,
+        "wires": []
+    },
+    {
+        "id": "2ee60bf4.8363e4",
+        "type": "switch",
+        "z": "cbc38735.70e868",
+        "name": "If connected",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "connected",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 292,
+        "y": 153,
+        "wires": [
+            [
+                "4b080063.9800d"
+            ]
+        ]
+    },
+    {
+        "id": "ccd21cff.ab6c6",
+        "type": "template",
+        "z": "cbc38735.70e868",
+        "name": "Switch to OS Layer",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"command\":{\n    \"layer\":\"UK OS Light\"\n}\n}",
+        "output": "json",
+        "x": 739.5,
+        "y": 266,
+        "wires": [
+            [
+                "abaee60b.039e88",
+                "ca728ee1.2331e"
+            ]
+        ]
+    },
+    {
+        "id": "126fdd6c.e33263",
+        "type": "delay",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 711,
+        "y": 207,
+        "wires": [
+            [
+                "ccd21cff.ab6c6"
+            ]
+        ]
+    },
+    {
+        "id": "d88f09db.3a85c8",
+        "type": "comment",
+        "z": "cbc38735.70e868",
+        "name": "Detect when someone opens the map",
+        "info": "",
+        "x": 181.5,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "73a4aec6.8cf3d",
+        "type": "comment",
+        "z": "cbc38735.70e868",
+        "name": "Allow other tabs to control the map",
+        "info": "",
+        "x": 739.5,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "d73ff0cf.04653",
+        "type": "debug",
+        "z": "cbc38735.70e868",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1080,
+        "y": 60,
+        "wires": []
+    }
+]

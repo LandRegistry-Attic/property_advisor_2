@@ -1,126 +1,5 @@
 [
     {
-        "id": "23334a9.a1b94b6",
-        "type": "worldmap",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "lat": "51.4709",
-        "lon": "-2.6999",
-        "zoom": "11",
-        "layer": "OSM",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "show",
-        "panit": "true",
-        "x": 786,
-        "y": 358,
-        "wires": []
-    },
-    {
-        "id": "b868013.59eb7",
-        "type": "inject",
-        "z": "bb81f63b.f32678",
-        "name": "Get keys",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "x": 88,
-        "y": 44,
-        "wires": [
-            [
-                "7f000ba3.d4c534"
-            ]
-        ]
-    },
-    {
-        "id": "e13b44e4.234778",
-        "type": "cloudant in",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "cloudant": "",
-        "database": "credentials",
-        "service": "property-api-masher-cloudantNoSQLDB",
-        "search": "_id_",
-        "design": "",
-        "index": "",
-        "x": 448.5,
-        "y": 42,
-        "wires": [
-            [
-                "47524b26.b85b04"
-            ]
-        ]
-    },
-    {
-        "id": "7f000ba3.d4c534",
-        "type": "change",
-        "z": "bb81f63b.f32678",
-        "name": "Ordnance Survey",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Ordnance Survey",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 263.5,
-        "y": 43,
-        "wires": [
-            [
-                "e13b44e4.234778"
-            ]
-        ]
-    },
-    {
-        "id": "d47201a8.27d77",
-        "type": "debug",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 818.5,
-        "y": 42,
-        "wires": []
-    },
-    {
-        "id": "47524b26.b85b04",
-        "type": "change",
-        "z": "bb81f63b.f32678",
-        "name": "Store OS",
-        "rules": [
-            {
-                "t": "set",
-                "p": "os",
-                "pt": "global",
-                "to": "payload.key",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 604,
-        "y": 43,
-        "wires": [
-            [
-                "d47201a8.27d77"
-            ]
-        ]
-    },
-    {
         "id": "e3830d3a.482b2",
         "type": "inject",
         "z": "bb81f63b.f32678",
@@ -131,8 +10,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 133,
-        "y": 130,
+        "x": 149,
+        "y": 191,
         "wires": [
             [
                 "18964463.0c107c"
@@ -148,8 +27,8 @@
         "ret": "txt",
         "url": "https://api.ordnancesurvey.co.uk/places/v1/addresses/find?query={{{payload}}}&key={{{key}}}&maxresults=1&output_srs=WGS84",
         "tls": "",
-        "x": 534.5,
-        "y": 132,
+        "x": 529.5,
+        "y": 188,
         "wires": [
             [
                 "1a06dee9.906521"
@@ -175,8 +54,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 348,
-        "y": 133,
+        "x": 367,
+        "y": 189,
         "wires": [
             [
                 "67feb223.fc3abc"
@@ -187,12 +66,12 @@
         "id": "99911dd4.28525",
         "type": "debug",
         "z": "bb81f63b.f32678",
-        "name": "",
+        "name": "Address found?",
         "active": true,
         "console": "false",
-        "complete": "false",
-        "x": 678.5,
-        "y": 195,
+        "complete": "payload",
+        "x": 565.5,
+        "y": 333,
         "wires": []
     },
     {
@@ -201,8 +80,8 @@
         "z": "bb81f63b.f32678",
         "name": "",
         "pretty": false,
-        "x": 709.5,
-        "y": 127,
+        "x": 674.5,
+        "y": 188,
         "wires": [
             [
                 "b6c50e7d.4e8b3"
@@ -270,93 +149,15 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 277,
-        "y": 206,
+        "x": 280,
+        "y": 300,
         "wires": [
             [
                 "99911dd4.28525",
                 "5041ef9f.1e37",
-                "52647812.572ae8"
+                "e99221e6.23c42"
             ]
         ]
-    },
-    {
-        "id": "f6a26a5c.8c1928",
-        "type": "template",
-        "z": "bb81f63b.f32678",
-        "name": "Add Map",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\"command\":{\n    \"map\":{\n        \"name\":\"UK OS Light\",\n        \"url\":\"https://api2.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG:3857/Light%203857/{z}/{x}/{y}.png?key={{{key}}}\",\n        \"opt\":{ \"minZoom\": 7, \"maxZoom\":20, \"attribution\":\"&copy; Ordnance Survey\" }\n    }\n}\n}",
-        "output": "json",
-        "x": 514.5,
-        "y": 359,
-        "wires": [
-            [
-                "23334a9.a1b94b6",
-                "54e7e41.6c84c1c"
-            ]
-        ]
-    },
-    {
-        "id": "20101d99.e4db12",
-        "type": "change",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "key",
-                "pt": "msg",
-                "to": "os",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 316,
-        "y": 340,
-        "wires": [
-            [
-                "f6a26a5c.8c1928"
-            ]
-        ]
-    },
-    {
-        "id": "ab16086a.59fb08",
-        "type": "inject",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 90,
-        "y": 330,
-        "wires": [
-            [
-                "20101d99.e4db12"
-            ]
-        ]
-    },
-    {
-        "id": "54e7e41.6c84c1c",
-        "type": "debug",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 589.5,
-        "y": 442,
-        "wires": []
     },
     {
         "id": "55eebf56.f97aa",
@@ -377,7 +178,8 @@
         "wires": [
             [
                 "18964463.0c107c",
-                "19e3423a.f1105e"
+                "19e3423a.f1105e",
+                "c8dccd37.f64b1"
             ]
         ]
     },
@@ -389,8 +191,8 @@
         "links": [
             "f9dbba91.cd3188"
         ],
-        "x": 662.5,
-        "y": 229,
+        "x": 667.5,
+        "y": 299,
         "wires": []
     },
     {
@@ -401,192 +203,15 @@
         "links": [
             "b3053620.722cb8"
         ],
-        "x": 387.5,
-        "y": 92,
+        "x": 488.5,
+        "y": 90,
         "wires": []
-    },
-    {
-        "id": "f09b0d5f.23323",
-        "type": "link in",
-        "z": "bb81f63b.f32678",
-        "name": "send to map",
-        "links": [
-            "97431366.5dbde"
-        ],
-        "x": 524,
-        "y": 323,
-        "wires": [
-            [
-                "23334a9.a1b94b6"
-            ]
-        ]
-    },
-    {
-        "id": "8f521fce.6a1ba",
-        "type": "change",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.command",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "payload.command.layer",
-                "pt": "msg",
-                "to": "UK OS Light",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.command.lat",
-                "pt": "msg",
-                "to": "payload.lat",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.command.lon",
-                "pt": "msg",
-                "to": "payload.lon",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.command.zoom",
-                "pt": "msg",
-                "to": "20",
-                "tot": "num"
-            },
-            {
-                "t": "delete",
-                "p": "name",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "lat",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "lon",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "layer",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 837,
-        "y": 289,
-        "wires": [
-            [
-                "23334a9.a1b94b6"
-            ]
-        ]
-    },
-    {
-        "id": "a66f3a6b.c62ff8",
-        "type": "debug",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 878.5,
-        "y": 227,
-        "wires": []
-    },
-    {
-        "id": "c1c9d84d.a45728",
-        "type": "ui_ui_control",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "x": 65,
-        "y": 430,
-        "wires": [
-            [
-                "c5ed8bb1.38c698",
-                "f24d78cc.98bfc8"
-            ]
-        ]
-    },
-    {
-        "id": "c5ed8bb1.38c698",
-        "type": "switch",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "connect",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "outputs": 1,
-        "x": 197.5,
-        "y": 430,
-        "wires": [
-            [
-                "20101d99.e4db12"
-            ]
-        ]
-    },
-    {
-        "id": "f24d78cc.98bfc8",
-        "type": "debug",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 381.5,
-        "y": 444,
-        "wires": []
-    },
-    {
-        "id": "52647812.572ae8",
-        "type": "delay",
-        "z": "bb81f63b.f32678",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 296.5,
-        "y": 278,
-        "wires": [
-            [
-                "20101d99.e4db12",
-                "e99221e6.23c42"
-            ]
-        ]
     },
     {
         "id": "e99221e6.23c42",
         "type": "delay",
         "z": "bb81f63b.f32678",
-        "name": "",
+        "name": "Wait a second to allow things to stabilise",
         "pauseType": "delay",
         "timeout": "1",
         "timeoutUnits": "seconds",
@@ -597,12 +222,12 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 503,
-        "y": 274,
+        "x": 464,
+        "y": 399,
         "wires": [
             [
-                "23334a9.a1b94b6",
-                "a37e5deb.23552"
+                "a37e5deb.23552",
+                "1c581e45.4bd4b2"
             ]
         ]
     },
@@ -617,14 +242,67 @@
         "syntax": "mustache",
         "template": "{\"command\":{\n    \"layer\":\"UK OS Light\",\n    \"lat\":\"{{{payload.lat}}}\",\n    \"lon\": \"{{{payload.lon}}}\",\n    \"zoom\": 20\n}\n}",
         "output": "json",
-        "x": 671.5,
-        "y": 269,
+        "x": 730,
+        "y": 420,
         "wires": [
             [
-                "23334a9.a1b94b6",
-                "a66f3a6b.c62ff8"
+                "1c581e45.4bd4b2"
             ]
         ]
+    },
+    {
+        "id": "1c581e45.4bd4b2",
+        "type": "link out",
+        "z": "bb81f63b.f32678",
+        "name": "Send search to map",
+        "links": [
+            "856c4296.b51aa"
+        ],
+        "x": 856.5,
+        "y": 398,
+        "wires": []
+    },
+    {
+        "id": "d74c8826.7ff8d8",
+        "type": "comment",
+        "z": "bb81f63b.f32678",
+        "name": "Send search information to the Property Information tab",
+        "info": "",
+        "x": 563.5,
+        "y": 55,
+        "wires": []
+    },
+    {
+        "id": "5765fcd1.f352b4",
+        "type": "comment",
+        "z": "bb81f63b.f32678",
+        "name": "Ask the OS to locate the address",
+        "info": "",
+        "x": 474.5,
+        "y": 147,
+        "wires": []
+    },
+    {
+        "id": "3d4fcabc.6c3f06",
+        "type": "comment",
+        "z": "bb81f63b.f32678",
+        "name": "Send address details to Property Information tab",
+        "info": "",
+        "x": 699.5,
+        "y": 266,
+        "wires": []
+    },
+    {
+        "id": "c8dccd37.f64b1",
+        "type": "debug",
+        "z": "bb81f63b.f32678",
+        "name": "Search entered",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 380.5,
+        "y": 111,
+        "wires": []
     },
     {
         "id": "db2fdfb4.8776a",

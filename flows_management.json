@@ -1,0 +1,151 @@
+[
+    {
+        "id": "b0dd8fbd.ae923",
+        "type": "inject",
+        "z": "65695f94.693a",
+        "name": "Get keys",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 129,
+        "y": 108,
+        "wires": [
+            [
+                "98c91be5.41af48"
+            ]
+        ]
+    },
+    {
+        "id": "bb114198.071a3",
+        "type": "cloudant in",
+        "z": "65695f94.693a",
+        "name": "",
+        "cloudant": "",
+        "database": "credentials",
+        "service": "property-api-masher-cloudantNoSQLDB",
+        "search": "_id_",
+        "design": "",
+        "index": "",
+        "x": 489.5,
+        "y": 106,
+        "wires": [
+            [
+                "d11c41e8.0637a"
+            ]
+        ]
+    },
+    {
+        "id": "98c91be5.41af48",
+        "type": "change",
+        "z": "65695f94.693a",
+        "name": "Ordnance Survey",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Ordnance Survey",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 304.5,
+        "y": 107,
+        "wires": [
+            [
+                "bb114198.071a3"
+            ]
+        ]
+    },
+    {
+        "id": "544b00fb.7f963",
+        "type": "debug",
+        "z": "65695f94.693a",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 815.5,
+        "y": 108,
+        "wires": []
+    },
+    {
+        "id": "d11c41e8.0637a",
+        "type": "change",
+        "z": "65695f94.693a",
+        "name": "Store OS",
+        "rules": [
+            {
+                "t": "set",
+                "p": "os",
+                "pt": "global",
+                "to": "payload.key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 645,
+        "y": 107,
+        "wires": [
+            [
+                "544b00fb.7f963"
+            ]
+        ]
+    },
+    {
+        "id": "86be44aa.9c6098",
+        "type": "comment",
+        "z": "65695f94.693a",
+        "name": "Get stored API keys",
+        "info": "",
+        "x": 122.5,
+        "y": 65,
+        "wires": []
+    },
+    {
+        "id": "a7506289.a61bd",
+        "type": "ui_ui_control",
+        "z": "65695f94.693a",
+        "name": "",
+        "x": 106,
+        "y": 236,
+        "wires": [
+            [
+                "2de3b295.2de31e"
+            ]
+        ]
+    },
+    {
+        "id": "2de3b295.2de31e",
+        "type": "debug",
+        "z": "65695f94.693a",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 300.5,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9811029f.edefd",
+        "type": "comment",
+        "z": "65695f94.693a",
+        "name": "Debug out when things happen in the UI",
+        "info": "",
+        "x": 199.5,
+        "y": 183,
+        "wires": []
+    }
+]

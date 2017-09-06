@@ -18,12 +18,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 373,
-        "y": 262,
+        "x": 360,
+        "y": 260,
         "wires": [
             [
                 "5a7394c2.4c20ac",
-                "a5fe4c87.85007"
+                "7352a7ed.7d7df8"
             ]
         ]
     },
@@ -33,14 +33,14 @@
         "z": "833aea02.03e6d8",
         "group": "4b572e75.fee4e",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "6",
+        "height": "3",
         "name": "Address",
         "label": "Address",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1083,
-        "y": 284,
+        "x": 1320,
+        "y": 380,
         "wires": []
     },
     {
@@ -51,8 +51,8 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 664.5,
-        "y": 243,
+        "x": 714.5,
+        "y": 229,
         "wires": []
     },
     {
@@ -122,7 +122,7 @@
         "type": "debug",
         "z": "833aea02.03e6d8",
         "name": "",
-        "active": false,
+        "active": true,
         "console": "false",
         "complete": "false",
         "x": 749.5,
@@ -149,9 +149,9 @@
         "id": "bca54ce0.2d2c9",
         "type": "comment",
         "z": "833aea02.03e6d8",
-        "name": "User has entered a search",
+        "name": "User has entered a search, flip the UI to the information tab",
         "info": "",
-        "x": 200.5,
+        "x": 300.5,
         "y": 39,
         "wires": []
     },
@@ -161,8 +161,8 @@
         "z": "833aea02.03e6d8",
         "name": "address located via OS",
         "info": "",
-        "x": 204.5,
-        "y": 185,
+        "x": 205.5,
+        "y": 181,
         "wires": []
     },
     {
@@ -171,15 +171,15 @@
         "z": "833aea02.03e6d8",
         "name": "Load info from Property API",
         "info": "",
-        "x": 253.5,
-        "y": 377,
+        "x": 220,
+        "y": 400,
         "wires": []
     },
     {
         "id": "955764c0.3dae28",
         "type": "change",
         "z": "833aea02.03e6d8",
-        "name": "Store",
+        "name": "Store for future",
         "rules": [
             {
                 "t": "set",
@@ -194,8 +194,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 316,
-        "y": 298,
+        "x": 340,
+        "y": 300,
         "wires": [
             [
                 "1cb20a86.6fe265",
@@ -222,12 +222,13 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 195,
-        "y": 446,
+        "x": 190,
+        "y": 440,
         "wires": [
             [
                 "21c2e443.0f47bc",
-                "29c56ade.de7e96"
+                "29c56ade.de7e96",
+                "4df77e51.cf428"
             ]
         ]
     },
@@ -240,8 +241,8 @@
         "ret": "txt",
         "url": "https://propertyapi-undominative-homiletics.eu-gb.mybluemix.net/v1/properties/{{{payload}}}/landregisters",
         "tls": "",
-        "x": 380.75,
-        "y": 446.0000066757202,
+        "x": 390,
+        "y": 440,
         "wires": [
             [
                 "79e9f78.dd22908",
@@ -261,8 +262,8 @@
         "label": "Tenure",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 980,
-        "y": 348,
+        "x": 1310,
+        "y": 420,
         "wires": []
     },
     {
@@ -284,8 +285,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 712.5,
-        "y": 349,
+        "x": 920,
+        "y": 420,
         "wires": [
             [
                 "7f8a2656.261b18"
@@ -311,8 +312,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 750.5,
-        "y": 629,
+        "x": 510,
+        "y": 360,
         "wires": [
             []
         ]
@@ -328,8 +329,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 385,
-        "y": 573,
+        "x": 750,
+        "y": 360,
         "wires": [
             [
                 "ab43abe0.ffa548",
@@ -348,8 +349,8 @@
         "z": "833aea02.03e6d8",
         "name": "",
         "pretty": false,
-        "x": 566.5000076293945,
-        "y": 448.5000066757202,
+        "x": 570,
+        "y": 440,
         "wires": [
             [
                 "ab43abe0.ffa548",
@@ -366,7 +367,7 @@
         "id": "7352a7ed.7d7df8",
         "type": "change",
         "z": "833aea02.03e6d8",
-        "name": "",
+        "name": "Add newlines",
         "rules": [
             {
                 "t": "change",
@@ -374,7 +375,7 @@
                 "pt": "msg",
                 "from": ",",
                 "fromt": "str",
-                "to": "\\n",
+                "to": "<br>",
                 "tot": "str"
             }
         ],
@@ -383,8 +384,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 588,
-        "y": 201,
+        "x": 1120,
+        "y": 380,
         "wires": [
             [
                 "a5fe4c87.85007"
@@ -410,27 +411,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 714,
-        "y": 313,
+        "x": 920,
+        "y": 380,
         "wires": [
             [
-                "7e2708ba.1ba248"
-            ]
-        ]
-    },
-    {
-        "id": "7e2708ba.1ba248",
-        "type": "function",
-        "z": "833aea02.03e6d8",
-        "name": "commas for newlines",
-        "func": "var address = msg.payload.replace(/,/g,\"\\n\");\nmsg.payload = address;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 931.5,
-        "y": 317,
-        "wires": [
-            [
-                "a5fe4c87.85007"
+                "7352a7ed.7d7df8"
             ]
         ]
     },
@@ -453,8 +438,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 706,
-        "y": 421,
+        "x": 910,
+        "y": 500,
         "wires": [
             [
                 "1176e7b5.a5c9b8"
@@ -473,8 +458,8 @@
         "label": "Last Sold",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 980,
-        "y": 419,
+        "x": 1310,
+        "y": 500,
         "wires": []
     },
     {
@@ -486,8 +471,8 @@
         "ret": "txt",
         "url": "https://propertyapi-undominative-homiletics.eu-gb.mybluemix.net/v1/properties/{{{payload}}}",
         "tls": "",
-        "x": 388.5,
-        "y": 511.50000762939453,
+        "x": 370,
+        "y": 760,
         "wires": [
             [
                 "25733a8a.1b20e6",
@@ -501,8 +486,8 @@
         "z": "833aea02.03e6d8",
         "name": "",
         "pretty": false,
-        "x": 562.7500076293945,
-        "y": 509.00000762939453,
+        "x": 570,
+        "y": 760,
         "wires": [
             [
                 "329280e0.2a511",
@@ -529,8 +514,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 713,
-        "y": 663,
+        "x": 910,
+        "y": 760,
         "wires": [
             [
                 "8aec085f.e5c9a8"
@@ -549,8 +534,8 @@
         "label": "Valuation",
         "format": "£{{msg.payload}}",
         "layout": "row-spread",
-        "x": 996,
-        "y": 674,
+        "x": 1310,
+        "y": 760,
         "wires": []
     },
     {
@@ -564,8 +549,8 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "x": 123,
-        "y": 999,
+        "x": 150,
+        "y": 1100,
         "wires": [
             [
                 "d347b470.7a14b8"
@@ -585,8 +570,8 @@
         "storeOutMessages": true,
         "fwdInMessages": true,
         "templateScope": "local",
-        "x": 481,
-        "y": 1002,
+        "x": 508,
+        "y": 1103,
         "wires": [
             []
         ]
@@ -601,8 +586,8 @@
         "format": "handlebars",
         "syntax": "mustache",
         "template": "<iframe src={{{payload}}} height=800px width=800px ></iframe>",
-        "x": 323,
-        "y": 999,
+        "x": 350,
+        "y": 1100,
         "wires": [
             [
                 "413fb376.8fc41c"
@@ -628,8 +613,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 718,
-        "y": 721,
+        "x": 620,
+        "y": 700,
         "wires": [
             []
         ]
@@ -645,8 +630,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 385.5,
-        "y": 623,
+        "x": 850,
+        "y": 700,
         "wires": [
             [
                 "329280e0.2a511"
@@ -664,8 +649,8 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "x": 103,
-        "y": 1056,
+        "x": 130,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -689,8 +674,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 734,
-        "y": 590,
+        "x": 930,
+        "y": 620,
         "wires": [
             [
                 "5ab4db90.72db54"
@@ -705,8 +690,8 @@
         "func": "var wgs84 = [];\nvar proj4 = context.global.proj4;\nproj4.defs(\"EPSG:27700\",\"+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs\");\n\nfor(var coordinate in msg.payload){\n    var coord = proj4('EPSG:27700', 'WGS84', msg.payload[coordinate]);\n    wgs84.push([coord[1],coord[0]]);\n}\nmsg.payload = {\"area\":wgs84, \"name\":\"boundary\",\"layer\":\"property\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 993.5,
-        "y": 590,
+        "x": 1150,
+        "y": 620,
         "wires": [
             [
                 "97431366.5dbde"
@@ -719,10 +704,11 @@
         "z": "833aea02.03e6d8",
         "name": "",
         "links": [
-            "f09b0d5f.23323"
+            "f09b0d5f.23323",
+            "856c4296.b51aa"
         ],
-        "x": 1140.5,
-        "y": 601,
+        "x": 1315,
+        "y": 620,
         "wires": []
     },
     {
@@ -744,8 +730,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 711,
-        "y": 387,
+        "x": 910,
+        "y": 460,
         "wires": [
             [
                 "2453d5f5.8bef2a"
@@ -764,20 +750,20 @@
         "label": "Rent",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 980,
-        "y": 386,
+        "x": 1310,
+        "y": 460,
         "wires": []
     },
     {
         "id": "2453d5f5.8bef2a",
         "type": "function",
         "z": "833aea02.03e6d8",
-        "name": "",
-        "func": "if(\"undefined\" == typeof msg.payload){\n    node.send({\"payload\":0});\n}\nelse{\nvar rePattern = new RegExp(/of (£.*) created/);\nvar arrMatches = msg.payload.match(rePattern);\nvar rent = arrMatches[1];\nnode.warn(rent);\nmsg.payload = rent;\nreturn msg;\n}\nreturn null;",
+        "name": "Extract price from text",
+        "func": "if(\"undefined\" == typeof msg.payload){\n    node.send({\"payload\":0});\n}\nelse{\nvar rePattern = new RegExp(/of (£.*) created/);\nvar arrMatches = msg.payload.match(rePattern);\nvar rent = arrMatches[1];\nmsg.payload = rent;\nreturn msg;\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
-        "x": 849.5,
-        "y": 386,
+        "x": 1100,
+        "y": 460,
         "wires": [
             [
                 "98d955ac.d160b8"
@@ -803,8 +789,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 736,
-        "y": 453,
+        "x": 930,
+        "y": 540,
         "wires": [
             [
                 "e4a9295f.cf0568"
@@ -823,8 +809,8 @@
         "label": "Restrictions",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1001,
-        "y": 455,
+        "x": 1330,
+        "y": 540,
         "wires": []
     },
     {
@@ -846,8 +832,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 724,
-        "y": 494,
+        "x": 920,
+        "y": 580,
         "wires": [
             [
                 "fa4f1638.83a5b8"
@@ -866,8 +852,8 @@
         "label": "Owners",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 992,
-        "y": 494,
+        "x": 1320,
+        "y": 580,
         "wires": []
     },
     {
@@ -879,8 +865,8 @@
         "ret": "txt",
         "url": "https://opendata.bristol.gov.uk/api/records/1.0/search/?dataset=tree-preservation-order-trunk&facet=treetype&facet=comments&facet=tpstatus&geofilter.distance={{{payload.lat}}}%2C{{{payload.lon}}}%2C100",
         "tls": "",
-        "x": 355,
-        "y": 852,
+        "x": 340,
+        "y": 880,
         "wires": [
             [
                 "9487c6a9.2d45a8"
@@ -895,8 +881,8 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 1005.5,
-        "y": 942,
+        "x": 1130,
+        "y": 920,
         "wires": []
     },
     {
@@ -918,8 +904,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 636,
-        "y": 930,
+        "x": 600,
+        "y": 820,
         "wires": [
             []
         ]
@@ -928,7 +914,7 @@
         "id": "ab4d7c47.d2dfa",
         "type": "change",
         "z": "833aea02.03e6d8",
-        "name": "",
+        "name": "Extract geometries",
         "rules": [
             {
                 "t": "set",
@@ -943,8 +929,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 745,
-        "y": 846,
+        "x": 930,
+        "y": 880,
         "wires": [
             [
                 "184b730f.ec234d",
@@ -963,8 +949,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 379.5,
-        "y": 945,
+        "x": 780,
+        "y": 820,
         "wires": [
             [
                 "ab4d7c47.d2dfa"
@@ -977,8 +963,8 @@
         "z": "833aea02.03e6d8",
         "name": "",
         "pretty": false,
-        "x": 485.5,
-        "y": 854,
+        "x": 570,
+        "y": 880,
         "wires": [
             [
                 "ab4d7c47.d2dfa",
@@ -991,11 +977,11 @@
         "type": "function",
         "z": "833aea02.03e6d8",
         "name": "Create TPO markers",
-        "func": "for(var coord in msg.payload){\n    node.warn(msg.payload[coord]);\n    var marker = {\"payload\":{\"lat\":msg.payload[coord].coordinates[1],\n                            \"lon\":msg.payload[coord].coordinates[0],\n                            \"icon\":\"fa-tree\",\n                            \"layer\":\"tpo\",\n                            \"name\":\"tree\"+coord\n    }\n    };\n    node.send(marker);\n}\nreturn null;",
+        "func": "for(var coord in msg.payload){\n    node.warn(msg.payload[coord]);\n    var marker = {\"payload\":{\"lat\":msg.payload[coord].coordinates[1],\n                            \"lon\":msg.payload[coord].coordinates[0],\n                            \"icon\":\"fa-tree\",\n                            \"iconColor\":\"green\",\n                            \"layer\":\"tpo\",\n                            \"name\":\"tree\"+coord\n    }\n    };\n    node.send(marker);\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
-        "x": 992.5,
-        "y": 844,
+        "x": 1160,
+        "y": 880,
         "wires": [
             [
                 "97431366.5dbde"
@@ -1010,9 +996,205 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 488.75000762939453,
-        "y": 366.2500057220459,
+        "x": 570,
+        "y": 620,
         "wires": []
+    },
+    {
+        "id": "b3ed2b7d.ddd538",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "Load info from Bristol Open Data API",
+        "info": "",
+        "x": 230,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "dccf92c7.dd8a3",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "Embed the worldmap into the UI tab",
+        "info": "",
+        "x": 190,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "804ed0fa.3a302",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "Load Listed Buildings data from Ordnance Survey",
+        "info": "",
+        "x": 280,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "4df77e51.cf428",
+        "type": "http request",
+        "z": "833aea02.03e6d8",
+        "name": "Get Listed Buildings",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://api2.ordnancesurvey.co.uk/insights/v1/properties/{{{payload}}}/listed-buildings/radius?key={{{key}}}&format=json&radius=1000",
+        "tls": "",
+        "x": 380,
+        "y": 1000,
+        "wires": [
+            [
+                "1f724383.33bfbc"
+            ]
+        ]
+    },
+    {
+        "id": "5b90294e.67f278",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 710,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "1f724383.33bfbc",
+        "type": "json",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "pretty": false,
+        "x": 570,
+        "y": 1000,
+        "wires": [
+            [
+                "5b90294e.67f278",
+                "279b6815.77b5e8",
+                "565dba03.7a5114"
+            ]
+        ]
+    },
+    {
+        "id": "279b6815.77b5e8",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "listed",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5d0f64cf.9f6eac",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "listed",
+        "payloadType": "global",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 790,
+        "y": 960,
+        "wires": [
+            [
+                "565dba03.7a5114"
+            ]
+        ]
+    },
+    {
+        "id": "565dba03.7a5114",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract name and point",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.results.[name,geometry.coordinates]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1000,
+        "wires": [
+            [
+                "d3b6ddb6.40a4c",
+                "91e3d584.30e408"
+            ]
+        ]
+    },
+    {
+        "id": "d3b6ddb6.40a4c",
+        "type": "function",
+        "z": "833aea02.03e6d8",
+        "name": "Convert to WGS84",
+        "func": "var proj4 = context.global.proj4;\nproj4.defs(\"EPSG:27700\",\"+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs\");\n\nfor(var location in msg.payload){\n    var coord = proj4('EPSG:27700', 'WGS84', [msg.payload[location][1],msg.payload[location][2]]);\n    var msg2 = {\"payload\":{\"name\":msg.payload[location][0], \n                           \"layer\":\"listed\", \n                           \"lat\":coord[1], \n                           \"lon\":coord[0],\n                           \"icon\":\"fa-home\",\n                           \"iconColor\":\"blue\"\n    }};\n    node.send(msg2);\n}\n\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1170,
+        "y": 1000,
+        "wires": [
+            [
+                "97431366.5dbde"
+            ]
+        ]
+    },
+    {
+        "id": "91e3d584.30e408",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1150,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "b36be371.f9d0a",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "re-run all",
+        "topic": "",
+        "payload": "current",
+        "payloadType": "global",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 100,
+        "y": 680,
+        "wires": [
+            [
+                "97431366.5dbde",
+                "1cb20a86.6fe265",
+                "5a8e8b47.885014"
+            ]
+        ]
     },
     {
         "id": "4b572e75.fee4e",
