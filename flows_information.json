@@ -1,0 +1,1044 @@
+[
+    {
+        "id": "ab198a70.c48f18",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "ADDRESS -> payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.ADDRESS",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 373,
+        "y": 262,
+        "wires": [
+            [
+                "5a7394c2.4c20ac",
+                "a5fe4c87.85007"
+            ]
+        ]
+    },
+    {
+        "id": "a5fe4c87.85007",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Address",
+        "label": "Address",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1083,
+        "y": 284,
+        "wires": []
+    },
+    {
+        "id": "5a7394c2.4c20ac",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 664.5,
+        "y": 243,
+        "wires": []
+    },
+    {
+        "id": "f9dbba91.cd3188",
+        "type": "link in",
+        "z": "833aea02.03e6d8",
+        "name": "Got address",
+        "links": [
+            "5041ef9f.1e37"
+        ],
+        "x": 158.5,
+        "y": 264,
+        "wires": [
+            [
+                "ab198a70.c48f18",
+                "955764c0.3dae28"
+            ]
+        ]
+    },
+    {
+        "id": "16d8ad3d.491263",
+        "type": "ui_ui_control",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "x": 570,
+        "y": 92,
+        "wires": [
+            [
+                "61c83cab.1b3c54"
+            ]
+        ]
+    },
+    {
+        "id": "9b5fbe3c.1807",
+        "type": "template",
+        "z": "833aea02.03e6d8",
+        "name": "Switch to view tab",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"tab\":\"Information\"}",
+        "output": "json",
+        "x": 311.5,
+        "y": 90,
+        "wires": [
+            [
+                "16d8ad3d.491263",
+                "ce7e279e.a535e8"
+            ]
+        ]
+    },
+    {
+        "id": "ce7e279e.a535e8",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 571.5,
+        "y": 135,
+        "wires": []
+    },
+    {
+        "id": "61c83cab.1b3c54",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 749.5,
+        "y": 92,
+        "wires": []
+    },
+    {
+        "id": "b3053620.722cb8",
+        "type": "link in",
+        "z": "833aea02.03e6d8",
+        "name": "Search entered",
+        "links": [
+            "19e3423a.f1105e"
+        ],
+        "x": 166.5,
+        "y": 89,
+        "wires": [
+            [
+                "9b5fbe3c.1807"
+            ]
+        ]
+    },
+    {
+        "id": "bca54ce0.2d2c9",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "User has entered a search",
+        "info": "",
+        "x": 200.5,
+        "y": 39,
+        "wires": []
+    },
+    {
+        "id": "749136d9.e17fb8",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "address located via OS",
+        "info": "",
+        "x": 204.5,
+        "y": 185,
+        "wires": []
+    },
+    {
+        "id": "91fd8584.6b3d88",
+        "type": "comment",
+        "z": "833aea02.03e6d8",
+        "name": "Load info from Property API",
+        "info": "",
+        "x": 253.5,
+        "y": 377,
+        "wires": []
+    },
+    {
+        "id": "955764c0.3dae28",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Store",
+        "rules": [
+            {
+                "t": "set",
+                "p": "current",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 316,
+        "y": 298,
+        "wires": [
+            [
+                "1cb20a86.6fe265",
+                "5a8e8b47.885014"
+            ]
+        ]
+    },
+    {
+        "id": "1cb20a86.6fe265",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Grab UPRN",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.UPRN",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 195,
+        "y": 446,
+        "wires": [
+            [
+                "21c2e443.0f47bc",
+                "29c56ade.de7e96"
+            ]
+        ]
+    },
+    {
+        "id": "21c2e443.0f47bc",
+        "type": "http request",
+        "z": "833aea02.03e6d8",
+        "name": "Get Landregisters",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://propertyapi-undominative-homiletics.eu-gb.mybluemix.net/v1/properties/{{{payload}}}/landregisters",
+        "tls": "",
+        "x": 380.75,
+        "y": 446.0000066757202,
+        "wires": [
+            [
+                "79e9f78.dd22908",
+                "7e4e42e2.28a9ac"
+            ]
+        ]
+    },
+    {
+        "id": "7f8a2656.261b18",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Tenure",
+        "label": "Tenure",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 348,
+        "wires": []
+    },
+    {
+        "id": "ab43abe0.ffa548",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters[0].tenure",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 712.5,
+        "y": 349,
+        "wires": [
+            [
+                "7f8a2656.261b18"
+            ]
+        ]
+    },
+    {
+        "id": "80ec1d46.f53c1",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "landregisters",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750.5,
+        "y": 629,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b255f3d3.c523",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "landregisters",
+        "payloadType": "global",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 385,
+        "y": 573,
+        "wires": [
+            [
+                "ab43abe0.ffa548",
+                "72ca72e4.aa0aac",
+                "4882776d.8fae98",
+                "1dd2e69e.086ff9",
+                "3108605a.ffeaf",
+                "12f19078.d9def",
+                "c4467dcc.77b6b"
+            ]
+        ]
+    },
+    {
+        "id": "79e9f78.dd22908",
+        "type": "json",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "pretty": false,
+        "x": 566.5000076293945,
+        "y": 448.5000066757202,
+        "wires": [
+            [
+                "ab43abe0.ffa548",
+                "80ec1d46.f53c1",
+                "4882776d.8fae98",
+                "1dd2e69e.086ff9",
+                "3108605a.ffeaf",
+                "12f19078.d9def",
+                "c4467dcc.77b6b"
+            ]
+        ]
+    },
+    {
+        "id": "7352a7ed.7d7df8",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": ",",
+                "fromt": "str",
+                "to": "\\n",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 588,
+        "y": 201,
+        "wires": [
+            [
+                "a5fe4c87.85007"
+            ]
+        ]
+    },
+    {
+        "id": "72ca72e4.aa0aac",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "extract address",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters[0].address",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 714,
+        "y": 313,
+        "wires": [
+            [
+                "7e2708ba.1ba248"
+            ]
+        ]
+    },
+    {
+        "id": "7e2708ba.1ba248",
+        "type": "function",
+        "z": "833aea02.03e6d8",
+        "name": "commas for newlines",
+        "func": "var address = msg.payload.replace(/,/g,\"\\n\");\nmsg.payload = address;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 931.5,
+        "y": 317,
+        "wires": [
+            [
+                "a5fe4c87.85007"
+            ]
+        ]
+    },
+    {
+        "id": "4882776d.8fae98",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "extract price",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPPD\"].infills[type=\"PRICE\"].text&' ('&\t\t$substringBefore(payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPPD\"].infills[type=\"PRICE\"].infill_id, ' ')&')'",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 706,
+        "y": 421,
+        "wires": [
+            [
+                "1176e7b5.a5c9b8"
+            ]
+        ]
+    },
+    {
+        "id": "1176e7b5.a5c9b8",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "Price",
+        "label": "Last Sold",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 419,
+        "wires": []
+    },
+    {
+        "id": "29c56ade.de7e96",
+        "type": "http request",
+        "z": "833aea02.03e6d8",
+        "name": "Get Property info",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://propertyapi-undominative-homiletics.eu-gb.mybluemix.net/v1/properties/{{{payload}}}",
+        "tls": "",
+        "x": 388.5,
+        "y": 511.50000762939453,
+        "wires": [
+            [
+                "25733a8a.1b20e6",
+                "7e4e42e2.28a9ac"
+            ]
+        ]
+    },
+    {
+        "id": "25733a8a.1b20e6",
+        "type": "json",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "pretty": false,
+        "x": 562.7500076293945,
+        "y": 509.00000762939453,
+        "wires": [
+            [
+                "329280e0.2a511",
+                "d6de11ae.81087"
+            ]
+        ]
+    },
+    {
+        "id": "329280e0.2a511",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 713,
+        "y": 663,
+        "wires": [
+            [
+                "8aec085f.e5c9a8"
+            ]
+        ]
+    },
+    {
+        "id": "8aec085f.e5c9a8",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "Value",
+        "label": "Valuation",
+        "format": "£{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 996,
+        "y": 674,
+        "wires": []
+    },
+    {
+        "id": "b9c12dee.18c49",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "/worldmap",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 123,
+        "y": 999,
+        "wires": [
+            [
+                "d347b470.7a14b8"
+            ]
+        ]
+    },
+    {
+        "id": "413fb376.8fc41c",
+        "type": "ui_template",
+        "z": "833aea02.03e6d8",
+        "group": "5176a7c5.1e02d8",
+        "name": "",
+        "order": 0,
+        "width": "16",
+        "height": "16",
+        "format": "<div ng-bind-html=\"msg.payload | trusted\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 481,
+        "y": 1002,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d347b470.7a14b8",
+        "type": "template",
+        "z": "833aea02.03e6d8",
+        "name": "embed map",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<iframe src={{{payload}}} height=800px width=800px ></iframe>",
+        "x": 323,
+        "y": 999,
+        "wires": [
+            [
+                "413fb376.8fc41c"
+            ]
+        ]
+    },
+    {
+        "id": "d6de11ae.81087",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "propertyinfo",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 718,
+        "y": 721,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a71d5f76.e5a66",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "propertyinfo",
+        "payloadType": "global",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 385.5,
+        "y": 623,
+        "wires": [
+            [
+                "329280e0.2a511"
+            ]
+        ]
+    },
+    {
+        "id": "3c5ab103.655f4e",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "/",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 103,
+        "y": 1056,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1dd2e69e.086ff9",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract boundary",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters.geometry.extent.geometry.coordinates",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 734,
+        "y": 590,
+        "wires": [
+            [
+                "5ab4db90.72db54"
+            ]
+        ]
+    },
+    {
+        "id": "5ab4db90.72db54",
+        "type": "function",
+        "z": "833aea02.03e6d8",
+        "name": "Convert to WGS84",
+        "func": "var wgs84 = [];\nvar proj4 = context.global.proj4;\nproj4.defs(\"EPSG:27700\",\"+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs\");\n\nfor(var coordinate in msg.payload){\n    var coord = proj4('EPSG:27700', 'WGS84', msg.payload[coordinate]);\n    wgs84.push([coord[1],coord[0]]);\n}\nmsg.payload = {\"area\":wgs84, \"name\":\"boundary\",\"layer\":\"property\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 993.5,
+        "y": 590,
+        "wires": [
+            [
+                "97431366.5dbde"
+            ]
+        ]
+    },
+    {
+        "id": "97431366.5dbde",
+        "type": "link out",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "links": [
+            "f09b0d5f.23323"
+        ],
+        "x": 1140.5,
+        "y": 601,
+        "wires": []
+    },
+    {
+        "id": "3108605a.ffeaf",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract rent",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters.groups[category=\"DEED\"].entries[role_code=\"DRNT\"].full_text",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 711,
+        "y": 387,
+        "wires": [
+            [
+                "2453d5f5.8bef2a"
+            ]
+        ]
+    },
+    {
+        "id": "98d955ac.d160b8",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Rent",
+        "label": "Rent",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 386,
+        "wires": []
+    },
+    {
+        "id": "2453d5f5.8bef2a",
+        "type": "function",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "func": "if(\"undefined\" == typeof msg.payload){\n    node.send({\"payload\":0});\n}\nelse{\nvar rePattern = new RegExp(/of (£.*) created/);\nvar arrMatches = msg.payload.match(rePattern);\nvar rent = arrMatches[1];\nnode.warn(rent);\nmsg.payload = rent;\nreturn msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 849.5,
+        "y": 386,
+        "wires": [
+            [
+                "98d955ac.d160b8"
+            ]
+        ]
+    },
+    {
+        "id": "12f19078.d9def",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract Restrictions",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$count(payload.landregisters.groups[category=\"DEED\"].entries[role_code=\"SSCH\"])",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 736,
+        "y": 453,
+        "wires": [
+            [
+                "e4a9295f.cf0568"
+            ]
+        ]
+    },
+    {
+        "id": "e4a9295f.cf0568",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Restrictions",
+        "label": "Restrictions",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1001,
+        "y": 455,
+        "wires": []
+    },
+    {
+        "id": "c4467dcc.77b6b",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "Extract owners",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPRO\"].infills.proprietors[0].name.forename &  ' ' & payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPRO\"].infills.proprietors[0].name.surname & ' and ' & payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPRO\"].infills.proprietors[1].name.forename &  ' ' & payload.landregisters.groups[category=\"OWNERSHIP\"].entries[role_code=\"RPRO\"].infills.proprietors[1].name.surname",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 724,
+        "y": 494,
+        "wires": [
+            [
+                "fa4f1638.83a5b8"
+            ]
+        ]
+    },
+    {
+        "id": "fa4f1638.83a5b8",
+        "type": "ui_text",
+        "z": "833aea02.03e6d8",
+        "group": "4b572e75.fee4e",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Owners",
+        "label": "Owners",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 992,
+        "y": 494,
+        "wires": []
+    },
+    {
+        "id": "5a8e8b47.885014",
+        "type": "http request",
+        "z": "833aea02.03e6d8",
+        "name": "Get TPOS",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://opendata.bristol.gov.uk/api/records/1.0/search/?dataset=tree-preservation-order-trunk&facet=treetype&facet=comments&facet=tpstatus&geofilter.distance={{{payload.lat}}}%2C{{{payload.lon}}}%2C100",
+        "tls": "",
+        "x": 355,
+        "y": 852,
+        "wires": [
+            [
+                "9487c6a9.2d45a8"
+            ]
+        ]
+    },
+    {
+        "id": "184b730f.ec234d",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1005.5,
+        "y": 942,
+        "wires": []
+    },
+    {
+        "id": "a4417cea.fe477",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tpo",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 636,
+        "y": 930,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab4d7c47.d2dfa",
+        "type": "change",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.records.geometry",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 745,
+        "y": 846,
+        "wires": [
+            [
+                "184b730f.ec234d",
+                "3886037d.adcffc"
+            ]
+        ]
+    },
+    {
+        "id": "b306e633.41cc38",
+        "type": "inject",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "topic": "",
+        "payload": "tpo",
+        "payloadType": "global",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 379.5,
+        "y": 945,
+        "wires": [
+            [
+                "ab4d7c47.d2dfa"
+            ]
+        ]
+    },
+    {
+        "id": "9487c6a9.2d45a8",
+        "type": "json",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "pretty": false,
+        "x": 485.5,
+        "y": 854,
+        "wires": [
+            [
+                "ab4d7c47.d2dfa",
+                "a4417cea.fe477"
+            ]
+        ]
+    },
+    {
+        "id": "3886037d.adcffc",
+        "type": "function",
+        "z": "833aea02.03e6d8",
+        "name": "Create TPO markers",
+        "func": "for(var coord in msg.payload){\n    node.warn(msg.payload[coord]);\n    var marker = {\"payload\":{\"lat\":msg.payload[coord].coordinates[1],\n                            \"lon\":msg.payload[coord].coordinates[0],\n                            \"icon\":\"fa-tree\",\n                            \"layer\":\"tpo\",\n                            \"name\":\"tree\"+coord\n    }\n    };\n    node.send(marker);\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 992.5,
+        "y": 844,
+        "wires": [
+            [
+                "97431366.5dbde"
+            ]
+        ]
+    },
+    {
+        "id": "7e4e42e2.28a9ac",
+        "type": "debug",
+        "z": "833aea02.03e6d8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 488.75000762939453,
+        "y": 366.2500057220459,
+        "wires": []
+    },
+    {
+        "id": "4b572e75.fee4e",
+        "type": "ui_group",
+        "z": "",
+        "name": "Property Information",
+        "tab": "ba7da5e5.635dc8",
+        "order": 2,
+        "disp": true,
+        "width": "8"
+    },
+    {
+        "id": "5176a7c5.1e02d8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Map",
+        "tab": "ba7da5e5.635dc8",
+        "order": 1,
+        "disp": false,
+        "width": "16"
+    },
+    {
+        "id": "ba7da5e5.635dc8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Information",
+        "icon": "fa-home"
+    }
+]
